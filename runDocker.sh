@@ -2,7 +2,7 @@
 set -eux
 
 # Build the docker image and run it!
-docker build -t volumio-build:jessie -f Dockerfile .
+docker build -t volumio-build:buster -f Dockerfile .
 
 docker run \
 	--rm -it \

@@ -9,7 +9,7 @@ fi
 # Build the docker image (and tag it)
 REPO=ashthespy
 IMG_NAME=volbuild
-IMG_RELEASE=stretch
+IMG_RELEASE=buster
 
 # Disable cache and build
 docker build --tag ${IMG_NAME}:${IMG_RELEASE} \
@@ -22,6 +22,7 @@ docker build --tag ${IMG_NAME}:${IMG_RELEASE} \
 docker run ${IMG_NAME}:${IMG_RELEASE} cat /etc/os-release>version
 
 # Set tags from version
+docker tag ${IMG_NAME}:${IMG_RELEASE} ${IMG_NAME}:latest
 #TODO: Make this more intelligent -
 # TAGVER=$(cat version)
 
