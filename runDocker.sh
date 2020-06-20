@@ -7,7 +7,7 @@ docker build -t volumio-build:buster -f Dockerfile .
 docker run \
 	--rm -it \
 	--privileged --tty \
-	-v  `pwd`/Build:/Build \
+	-v  "$(pwd)"/Build:/Build \
 	volumio-build \
 	bash
 	#./build.sh -b armv7

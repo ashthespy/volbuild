@@ -28,6 +28,7 @@ RUN apt-get -q update && apt-get install -qq -y\
 		lz4 \
 		md5deep \
 		u-boot-tools \
+		zip \
 		&& \
 		rm -rf /var/lib/apt/lists/* && \
     mkdir /Build && \

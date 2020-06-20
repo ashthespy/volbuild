@@ -3,7 +3,7 @@ set -eu
 if [ -n "${1-}" ]; then
   CACHE='--no-cache'
 else
-  CACHE=``
+  CACHE=""
 fi
 
 # Build the docker image (and tag it)
@@ -28,13 +28,13 @@ docker tag ${IMG_NAME}:${IMG_RELEASE} ${IMG_NAME}:latest
 
 TAGVER=$IMG_RELEASE
 TAGS=( \
-${TAGVER} \
+"${TAGVER}" \
 "latest" \
 )
 
 for TAG in "${TAGS[@]}"; do
-  echo Tagging and pushing $TAG to ${REPO}/${IMG_NAME}
-  docker tag ${IMG_NAME}:${IMG_RELEASE} ${REPO}/${IMG_NAME}:${TAG}
-  read -p "Press [Enter] key to start pushing to hub..."
-  docker push ${REPO}/${IMG_NAME}:${TAG}
+  echo Tagging and pushing "${TAG}" to ${REPO}/${IMG_NAME}
+  docker tag ${IMG_NAME}:${IMG_RELEASE} ${REPO}/${IMG_NAME}:"${TAG}"
+  read -rp "Press [Enter] key to start pushing to hub..."
+  docker push ${REPO}/${IMG_NAME}:"${TAG}"
 done
