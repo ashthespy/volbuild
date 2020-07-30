@@ -10,16 +10,19 @@ fi
 REPO=ashthespy
 IMG_NAME=volbuild
 IMG_RELEASE=buster
+NODE_V=14
 
+echo "Building with ${CACHE}"
 # Disable cache and build
 docker build --tag ${IMG_NAME}:${IMG_RELEASE} \
-             --file docker/Dockerfile \
-             --build-arg RELEASE=${IMG_RELEASE}\
-             ${CACHE} \
-              .
+  --file docker/Dockerfile \
+  --build-arg RELEASE=${IMG_RELEASE} \
+  --build-arg NODE_V=${NODE_V} \
+  "${CACHE}" \
+  .
 
 # Extract some container info to ver
-docker run ${IMG_NAME}:${IMG_RELEASE} cat /etc/os-release>version
+docker run ${IMG_NAME}:${IMG_RELEASE} cat /etc/os-release >version
 
 # Set tags from version
 docker tag ${IMG_NAME}:${IMG_RELEASE} ${IMG_NAME}:latest
@@ -27,9 +30,9 @@ docker tag ${IMG_NAME}:${IMG_RELEASE} ${IMG_NAME}:latest
 # TAGVER=$(cat version)
 
 TAGVER=$IMG_RELEASE
-TAGS=( \
-"${TAGVER}" \
-"latest" \
+TAGS=(
+  "${TAGVER}"
+  "latest"
 )
 
 for TAG in "${TAGS[@]}"; do
