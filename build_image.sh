@@ -9,7 +9,7 @@ fi
 # Build the docker image (and tag it)
 REPO=ashthespy
 IMG_NAME=volbuild
-IMG_RELEASE=buster
+IMG_RELEASE=bullseye
 NODE_V=14
 
 echo "Building with ${CACHE}"
@@ -18,7 +18,7 @@ docker build --tag ${IMG_NAME}:${IMG_RELEASE} \
   --file docker/Dockerfile \
   --build-arg RELEASE=${IMG_RELEASE} \
   --build-arg NODE_V=${NODE_V} \
-  "${CACHE}" \
+  ${CACHE} \
   .
 
 # Extract some container info to ver
@@ -32,7 +32,7 @@ docker tag ${IMG_NAME}:${IMG_RELEASE} ${IMG_NAME}:latest
 TAGVER=$IMG_RELEASE
 TAGS=(
   "${TAGVER}"
-  "latest"
+  # "latest"
 )
 
 for TAG in "${TAGS[@]}"; do
