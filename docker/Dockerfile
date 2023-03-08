@@ -48,7 +48,9 @@ RUN curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 	apt-get -y install docker-ce-cli &&\
 	groupadd docker &&\
 	useradd volumiobuild && usermod -aG docker volumiobuild
-
+# https://confluence.atlassian.com/bbkb/git-command-returns-fatal-error-about-the-repository-being-owned-by-someone-else-1167744132.html
+RUN git config --global --add safe.directory /Build
+# RUN git config --system --add safe.directory *
 VOLUME ["/Build","/Images"]
 
 
