@@ -4,7 +4,7 @@ ARG RELEASE=buster
 
 FROM debian:$RELEASE
 
-ARG NODE_V=14
+ARG NODE_V=18
 # Install requirements for build script
 RUN apt-get -q update \
 	&& apt-get -qq -y install \
@@ -20,6 +20,7 @@ RUN apt-get -q update \
 	kmod\
 	kpartx\
 	libssl-dev\
+	lsb-release\
 	lz4\
 	lzop\
 	md5deep\
@@ -36,6 +37,7 @@ RUN apt-get -q update \
 	u-boot-tools\
 	xz-utils\
 	zip\
+	zsync\
 	&& \
 	rm -rf /var/lib/apt/lists/* && \
 	mkdir /Build && \

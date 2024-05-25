@@ -10,7 +10,7 @@ fi
 REPO=ashthespy
 IMG_NAME=volbuild
 IMG_RELEASE=bullseye
-NODE_V=14
+NODE_V=18
 
 echo "Building with ${CACHE}"
 # Disable cache and build
