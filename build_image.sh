@@ -9,8 +9,8 @@ fi
 # Build the docker image (and tag it)
 REPO=ashthespy
 IMG_NAME=volbuild
-IMG_RELEASE=bullseye
-NODE_V=18
+IMG_RELEASE=bookworm
+NODE_V=20
 
 echo "Building with ${CACHE}"
 # Disable cache and build

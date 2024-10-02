@@ -9,6 +9,7 @@ ARG NODE_V=18
 RUN apt-get -q update \
 	&& apt-get -qq -y install \
 	apt-transport-https \
+	aha \
 	binfmt-support\
 	build-essential\
 	ca-certificates\
@@ -31,9 +32,10 @@ RUN apt-get -q update \
 	pv\
 	qemu-user-static\
 	qemu-utils\
-	qemu\
+	qemu-system\
 	squashfs-tools\
 	sudo\
+	rsync\
 	u-boot-tools\
 	xz-utils\
 	zip\
